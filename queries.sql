@@ -126,7 +126,15 @@
 
     -- List all the distinct projects that use at least one tech.
 
--- ???
+-- SELECT
+--     distinct(name) 
+-- FROM
+--     project 
+-- INNER JOIN 
+--     project_uses_tech
+-- ON 
+--     project.id = project_uses_tech.project_id;
+
 
     -- List all the distinct projects that use no tech.
 
@@ -164,4 +172,19 @@
 --     count DESC;
 
     -- Order the tech by how many projects use it.
+
+-- SELECT
+--     tech.id, tech.name, count(project_uses_tech.project_id)
+-- FROM
+--     tech
+-- LEFT OUTER JOIN 
+--     project_uses_tech 
+-- ON
+--     tech.id = project_uses_tech.tech_id 
+-- GROUP BY
+--     tech.id
+-- ORDER BY
+--     count DESC;
+    
     -- What is the average number of techs used by a project?
+-- ???
