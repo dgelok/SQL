@@ -134,12 +134,88 @@
     -- the reviewer name. Hint: you will need to do a three-way join - i.e. 
     -- joining all three tables together.
 
+-- SELECT 
+--     restaurants.name, reviewers.name, reviews.title, reviews.review_text
+-- FROM 
+--     restaurants
+-- JOIN
+--     reviews
+-- ON 
+--     reviews.restaurant_id = restaurants.id 
+-- JOIN
+--     reviewers 
+-- ON 
+--     reviewers.id = reviews.reviewer_id
+-- ORDER BY
+--     restaurants.name;
 
-    -- Get the average stars given by each reviewer. (reviewer name, average star rating)
-    -- Get the lowest star rating given by each reviewer. (reviewer name, lowest star rating)
-    -- Get the number of restaurants in each category. (category name, restaurant count)
-    -- Get number of 5 star reviews given by restaurant. (restaurant name, 5-star count)
-    -- Get the average star rating for a food category. (category name, average star rating)
+    -- Get the average stars given by each reviewer. (reviewer name, 
+    -- average star rating)
 
+-- SELECT 
+--     name, avg(stars)
+-- FROM 
+--     reviewers 
+-- JOIN 
+--     reviews
+-- ON 
+--     reviews.reviewer_id = reviewers.id
+-- GROUP BY 
+--     reviewers.name;
+
+
+    -- Get the lowest star rating given by each reviewer. 
+    -- (reviewer name, lowest star rating)
+
+-- SELECT 
+--     name, MIN(stars) 
+-- FROM 
+--     reviewers 
+-- JOIN 
+--     reviews 
+-- ON 
+--     reviewers.id = reviews.reviewer_id
+-- GROUP BY 
+--     reviewers.name;
+
+
+    -- Get the number of restaurants in each category. (category name, 
+    -- restaurant count)
+
+-- SELECT 
+--     category, COUNT(category)
+-- FROM 
+--     restaurants
+-- GROUP BY
+--     category;
+
+
+    -- Get number of 5 star reviews given by restaurant. 
+    -- (restaurant name, 5-star count)
+
+-- SELECT 
+--     name, count(stars)
+-- FROM 
+--     restaurants
+-- JOIN 
+--     reviews 
+-- ON 
+--     reviews.restaurant_id = restaurants.id 
+-- WHERE
+--     stars = 5
+-- GROUP BY 
+--     name;
+
+    -- Get the average star rating for a food category. (category name, 
+    -- average star rating)
+
+-- SELECT 
+--     category, avg(stars)
+-- FROM 
+--     restaurants 
+-- JOIN 
+--     reviews ON reviews.restaurant_id = restaurants.id
+-- GROUP BY
+--     category;
 
 
